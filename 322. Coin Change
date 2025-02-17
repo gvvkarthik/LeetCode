@@ -1,0 +1,73 @@
+
+
+```md
+# 🌟 Coin Change Problem
+
+## **📌 Problem Statement**  
+Given a set of coin denominations and a target amount, find the **fewest number of coins** needed to make the target amount. If that amount cannot be made, return `-1`.
+
+### **🔹 Example 1:**  
+```python
+Input: coins = [1, 2, 5], amount = 11
+Output: 3
+Explanation: The fewest coins needed to make 11 are 5 + 5 + 1 = 3 coins.
+```
+
+### **🔹 Example 2:**  
+```python
+Input: coins = [2], amount = 3
+Output: -1
+Explanation: It is not possible to make amount 3 with the given coins.
+```
+
+### **🔹 Example 3:**  
+```python
+Input: coins = [1], amount = 0
+Output: 0
+Explanation: No coins are needed to make 0.
+```
+
+---
+
+## **🚀 Solution Approach**  
+We can solve this problem using **Dynamic Programming (DP)**:
+1. **Subproblem**: The minimum number of coins required to make an amount `rem` can be computed by trying to subtract each coin value from the current amount, and recursively solving for the remaining amount.
+2. **Recursive Function**: We define a helper function `helper(rem)` that computes the minimum number of coins for a given remaining amount `rem`. If `rem == 0`, no coins are needed. If `rem < 0`, return infinity to indicate an invalid state.
+3. **Memoization**: We store the results of subproblems in a dictionary `dp` to avoid redundant calculations.
+
+---
+
+## **📝 Python Code (Coin Change)**  
+```python
+class Solution:
+    def coinChange(self, coins, amount):
+        dp = {}
+        
+        def helper(rem):
+            if rem == 0:
+                return 0
+            if rem < 0:
+                return float('inf')
+            if rem in dp:
+                return dp[rem]
+            
+            dp[rem] = min(helper(rem - coin) + 1 for coin in coins)
+            return dp[rem]
+        
+        res = helper(amount)
+        return res if res != float('inf') else -1
+```
+
+---
+
+## **⏳ Time & Space Complexity**  
+✅ **Time Complexity:** `O(A * C)`, where `A` is the amount and `C` is the number of coins. Each subproblem computes a result by iterating through all coins.  
+✅ **Space Complexity:** `O(A)`, for the memoization dictionary storing the results of subproblems.
+
+---
+
+## **⭐ Follow for More**  
+If you found this helpful, **⭐ star** the repo and follow me on GitHub! 🚀😊
+```
+
+.
