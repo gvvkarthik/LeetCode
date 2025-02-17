@@ -1,0 +1,49 @@
+
+```md
+# 🌟 Majority Element
+
+## **📌 Problem Statement**  
+Given an array `nums` of size `n`, return the element that appears more than `⌊ n / 2 ⌋` times in the array. It is guaranteed that the majority element always exists in the array.
+
+### **🔹 Example 1:**  
+```python
+Input: nums = [3, 2, 3]
+Output: 3
+Explanation: The majority element is 3, which appears more than `⌊ 3 / 2 ⌋` times (i.e., 1 time).
+```
+
+### **🔹 Example 2:**  
+```python
+Input: nums = [2, 2, 1, 1, 1, 2, 2]
+Output: 2
+Explanation: The majority element is 2, which appears more than `⌊ 7 / 2 ⌋` times (i.e., 3 times).
+```
+
+---
+
+## **🚀 Solution Approach**  
+The problem guarantees the presence of a majority element, which appears more than half of the time in the array. Here's how we solve it:
+1. **Sort the array:** Sorting will ensure that the majority element (appearing more than half the time) will always be at the middle index of the sorted array.
+2. **Return the middle element:** The majority element will always appear at the middle index of the sorted array, as it appears more than `n / 2` times.
+
+---
+
+## **📝 Python Code (Majority Element)**  
+```python
+class Solution:
+    def majorityElement(self, nums):
+        nums.sort()
+        return nums[len(nums) // 2]
+```
+
+---
+
+## **⏳ Time & Space Complexity**  
+✅ **Time Complexity:** `O(N log N)`, where `N` is the number of elements in the array. The sorting operation takes `O(N log N)` time.  
+✅ **Space Complexity:** `O(1)`, as we only use a constant amount of extra space for the operation.
+
+---
+
+## **⭐ Follow for More**  
+If you found this helpful, **⭐ star** the repo and follow me on GitHub! 🚀😊
+```
