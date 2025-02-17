@@ -1,0 +1,66 @@
+
+
+```md
+# 🔄 Reverse Linked List
+
+## **📌 Problem Statement**  
+Given the head of a singly linked list, reverse the list and return its head.
+
+### **🔹 Example 1:**  
+```python
+Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+Explanation: The linked list is reversed, with the first node becoming the last.
+```
+
+### **🔹 Example 2:**  
+```python
+Input: head = [1,2]
+Output: [2,1]
+Explanation: The linked list is reversed, and only two nodes are present.
+```
+
+---
+
+## **🚀 Solution Approach**  
+We use an iterative approach to reverse the linked list by maintaining three pointers:  
+1. `prev`: Initially set to `None` (this will eventually be the new head).
+2. `curr`: Initially set to the head of the list, this pointer will traverse the original list.
+3. `next_node`: Temporary storage for the next node to avoid losing it during the reversal process.
+
+We iterate through the list, reversing the `next` pointers until all nodes are processed, at which point `prev` points to the new head of the reversed list.
+
+---
+
+## **📝 Python Code (Reverse Linked List)**  
+```python
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        prev = None
+        curr = head
+        
+        while curr:
+            next_node = curr.next  # Store the next node
+            curr.next = prev  # Reverse the link
+            prev = curr  # Move prev forward
+            curr = next_node  # Move curr forward
+        
+        return prev  # New head of the reversed list
+```
+
+---
+
+## **⏳ Time & Space Complexity**  
+✅ **Time Complexity:** `O(N)`, where `N` is the number of nodes in the linked list. We visit each node once.  
+✅ **Space Complexity:** `O(1)`, as we only use a constant amount of extra space for the three pointers.
+
+---
+
+## **⭐ Follow for More**  
+If you found this helpful, **⭐ star** the repo and follow me on GitHub! 🚀😊
+```
