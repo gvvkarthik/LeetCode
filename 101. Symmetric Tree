@@ -1,0 +1,79 @@
+Certainly! Here's the `README.md` file for the **Symmetric Tree** problem using your LeetCode-style code:
+
+```md
+# 🔄 Symmetric Tree
+
+## **📌 Problem Statement**  
+Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+
+### **🔹 Example 1:**  
+```python
+Input: root = [1, 2, 2, 3, 4, 4, 3]  
+Output: true  
+Explanation: The tree is symmetric:
+        1
+       / \
+      2   2
+     / \ / \
+    3  4 4  3
+```
+
+### **🔹 Example 2:**  
+```python
+Input: root = [1, 2, 2, None, 3, None, 3]  
+Output: false  
+Explanation: The tree is not symmetric:
+        1
+       / \
+      2   2
+       \   \
+        3   3
+```
+
+## **🚀 Solution Approach**  
+1. A tree is symmetric if the left and right subtrees are mirror images of each other.
+2. We can recursively check if the left and right subtrees are symmetric by comparing their nodes.  
+3. Base cases: 
+    - If both subtrees are empty, they are symmetric.
+    - If one subtree is empty and the other is not, they are not symmetric.
+4. Recursively check the symmetry by comparing the values of the nodes and their respective subtrees.
+
+---
+
+## **📝 Python Code (Symmetric Tree)**  
+```python
+class Solution:
+    def isSymmetric(self, root: TreeNode) -> bool:
+        if not root:
+            return True
+
+        queue = deque([(root.left, root.right)])
+
+        while queue:
+            t1, t2 = queue.popleft()
+
+            if not t1 and not t2:
+                continue
+            if not t1 or not t2 or t1.val != t2.val:
+                return False
+
+            queue.append((t1.left, t2.right))
+            queue.append((t1.right, t2.left))
+
+        return True
+
+```
+
+---
+
+## **⏳ Time & Space Complexity**  
+✅ **Time Complexity:** `O(N)`, where `N` is the number of nodes in the tree. We visit each node once.  
+✅ **Space Complexity:** `O(H)`, where `H` is the height of the tree. This is due to the recursive call stack.
+
+---
+
+## **⭐ Follow for More**  
+If you found this helpful, **⭐ star** the repo and follow me on GitHub! 🚀😊
+```
+
+This `README.md` explains the **Symmetric Tree** problem, provides sample input/output, and presents the solution code along with time and space complexity analysis.
