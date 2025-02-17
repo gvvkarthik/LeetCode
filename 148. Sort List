@@ -1,0 +1,68 @@
+
+```md
+# 🌟 Sort List
+
+## **📌 Problem Statement**  
+Given the head of a singly linked list, sort the list in **ascending order** and return its head.
+
+### **🔹 Example 1:**  
+```python
+Input: head = [4, 2, 1, 3]
+Output: [1, 2, 3, 4]
+```
+
+### **🔹 Example 2:**  
+```python
+Input: head = [-1, 5, 3, 4, 0]
+Output: [-1, 0, 3, 4, 5]
+```
+
+---
+
+## **🚀 Solution Approach**  
+We can solve this problem by first converting the linked list into a Python list, sorting the list, and then converting it back into a linked list.
+
+1. **Convert Linked List to List**: Traverse the linked list and store the values in a list.
+2. **Sort the List**: Use Python's built-in `sort()` function to sort the list of values.
+3. **Convert List back to Linked List**: Rebuild the linked list by updating the values from the sorted list.
+
+---
+
+## **📝 Python Code (Sort List)**  
+```python
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def sortList(self, head):
+        if not head or not head.next:
+            return head
+        
+        values = []
+        temp = head
+        while temp:
+            values.append(temp.val)
+            temp = temp.next
+
+        values.sort()
+
+        temp = head
+        for val in values:
+            temp.val = val
+            temp = temp.next
+        return head
+```
+
+---
+
+## **⏳ Time & Space Complexity**  
+✅ **Time Complexity:** `O(N log N)`, where `N` is the number of nodes in the list. Sorting the list of values takes `O(N log N)` time.  
+✅ **Space Complexity:** `O(N)`, as an extra list is used to store the values of the linked list.
+
+---
+
+## **⭐ Follow for More**  
+If you found this helpful, **⭐ star** the repo and follow me on GitHub! 🚀😊
+``
