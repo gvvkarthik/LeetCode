@@ -1,0 +1,53 @@
+
+```md
+# 🔄 Invert Binary Tree  
+
+## **📌 Problem Statement**  
+You are given the root of a binary tree. Your task is to invert the tree, meaning that for every node in the tree, the left and right children should be swapped.  
+
+### **🔹 Example:**  
+```python
+Input: root = [4, 2, 7, 1, 3, 6, 9]  
+Output: [4, 7, 2, 9, 6, 3, 1]  
+Explanation: The binary tree is inverted to:
+        4
+       / \
+      7   2
+     / \ / \
+    9  6 3  1
+```  
+
+## **🚀 Solution Approach**  
+1. **Base Case**: If the root is `None`, return `None`.  
+2. **Recursive Step**: Swap the left and right subtrees of the root.  
+3. **Repeat**: Continue this process recursively for all nodes in the tree.
+
+---
+
+## **📝 Python Code (Invert Binary Tree)**  
+```python
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        if not root:
+            return None
+        root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
+        return root
+```
+
+---
+
+## **⏳ Time & Space Complexity**  
+✅ **Time Complexity:** `O(N)`, where `N` is the number of nodes in the tree. Each node is visited once.  
+✅ **Space Complexity:** `O(H)`, where `H` is the height of the tree. This is due to the recursive call stack.
+
+---
+
+## **⭐ Follow for More**  
+If you found this helpful, **⭐ star** the repo and follow me on GitHub! 🚀😊
+```
