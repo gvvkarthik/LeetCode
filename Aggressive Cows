@@ -1,0 +1,78 @@
+
+
+```md
+# 🐄 Aggressive Cows
+
+## **📌 Problem Statement**  
+You are given an array `stalls[]` representing the positions of stalls, and an integer `k` representing the number of cows. Your goal is to place `k` cows in these stalls such that the **minimum distance** between any two cows is **maximized**.
+
+### **🔹 Example 1:**  
+```python
+Input: stalls = [1, 2, 8, 4, 9], k = 3
+Output: 3
+Explanation: The first cow can be placed at position 1, the second cow at position 4, and the third cow at position 8. The minimum distance between cows is 3.
+```
+
+### **🔹 Example 2:**  
+```python
+Input: stalls = [10, 1, 2, 7, 5], k = 2
+Output: 9
+Explanation: The first cow can be placed at position 1, and the second cow at position 10. The minimum distance between cows is 9.
+```
+
+---
+
+## **🚀 Solution Approach**  
+We use **binary search** to find the largest minimum distance between cows. Here's the breakdown:
+1. **Sort the stalls** to ensure the positions are in increasing order.
+2. Perform a **binary search** on the distance between the cows.
+   - The search space is from `1` (minimum possible distance) to `stalls[-1] - stalls[0]` (maximum possible distance).
+3. **Check if placing cows with at least `mid` distance is possible** using a helper function `can_place_cows`.
+   - If placing cows is possible, try for a larger minimum distance by adjusting the `low` bound.
+   - If not, try smaller distances by adjusting the `high` bound.
+4. The binary search ensures that we find the maximum possible minimum distance.
+
+---
+
+## **📝 Python Code (Aggressive Cows)**  
+```python
+class Solution:
+    def can_place_cows(self, stalls, k, min_dist):
+        count = 1  # Place the first cow at the first stall
+        last_position = stalls[0]
+
+        for i in range(1, len(stalls)):
+            if stalls[i] - last_position >= min_dist:
+                count += 1
+                last_position = stalls[i]
+                if count == k:
+                    return True
+        return False
+
+    def aggressiveCows(self, stalls, k):
+        stalls.sort()  # Sort stalls in increasing order
+        low, high = 1, stalls[-1] - stalls[0]  # Search range for min distance
+        result = 0
+
+        while low <= high:
+            mid = (low + high) // 2
+            if self.can_place_cows(stalls, k, mid):
+                result = mid  # Valid answer, try for larger distance
+                low = mid + 1
+            else:
+                high = mid - 1  # Try smaller distance
+
+        return result
+```
+
+---
+
+## **⏳ Time & Space Complexity**  
+✅ **Time Complexity:** `O(N log D)`, where `N` is the number of stalls, and `D` is the difference between the largest and smallest stall positions. The binary search runs in `O(log D)` and the helper function `can_place_cows` runs in `O(N)`.  
+✅ **Space Complexity:** `O(1)`, as we only use a constant amount of extra space.
+
+---
+
+## **⭐ Follow for More**  
+If you found this helpful, **⭐ star** the repo and follow me on GitHub! 🚀😊
+```
