@@ -1,0 +1,66 @@
+
+
+```md
+# 🌟 Largest Number
+
+## **📌 Problem Statement**  
+Given a list of non-negative integers `nums`, arrange them such that they form the largest possible number.
+
+### **🔹 Example 1:**  
+```python
+Input: nums = [10, 2]
+Output: "210"
+```
+
+### **🔹 Example 2:**  
+```python
+Input: nums = [3, 30, 34, 5, 9]
+Output: "9534330"
+```
+
+### **🔹 Example 3:**  
+```python
+Input: nums = [0, 0]
+Output: "0"
+```
+
+---
+
+## **🚀 Solution Approach**  
+To form the largest possible number:
+1. **Convert all numbers to strings**: This allows comparison of numbers as sequences of digits.
+2. **Custom Comparison**: Compare two numbers `x` and `y` by comparing the concatenated results of `x + y` and `y + x`. If `x + y` is larger, `x` should come before `y` in the final number.
+3. **Sort** the list based on this custom comparison.
+4. **Edge Case**: If the sorted number starts with "0", the entire result is just "0".
+
+---
+
+## **📝 Python Code (Largest Number)**  
+```python
+from functools import cmp_to_key
+
+class Solution:
+    def largestNumber(self, nums: list[int]) -> str:
+        def compare(x, y):
+            return 1 if x + y < y + x else -1
+
+        nums = list(map(str, nums))
+        nums.sort(key=cmp_to_key(compare))
+        
+        result = "".join(nums)
+        return "0" if result[0] == "0" else result
+```
+
+---
+
+## **⏳ Time & Space Complexity**  
+✅ **Time Complexity:** `O(N log N)`, where `N` is the number of integers in the list. Sorting the numbers takes `O(N log N)` time, and the comparison of two strings takes linear time in the length of the strings.  
+✅ **Space Complexity:** `O(N)`, for the space used to store the string representations of the numbers.
+
+---
+
+## **⭐ Follow for More**  
+If you found this helpful, **⭐ star** the repo and follow me on GitHub! 🚀😊
+```
+
+.
