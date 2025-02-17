@@ -1,0 +1,66 @@
+
+
+```md
+# 🌟 Climbing Stairs Problem
+
+## **📌 Problem Statement**  
+You are climbing a staircase. It takes `n` steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you reach the top?
+
+### **🔹 Example 1:**  
+```python
+Input: n = 2
+Output: 2
+Explanation: There are two ways to reach the top:
+1. 1 step + 1 step
+2. 2 steps
+```
+
+### **🔹 Example 2:**  
+```python
+Input: n = 3
+Output: 3
+Explanation: There are three ways to reach the top:
+1. 1 step + 1 step + 1 step
+2. 1 step + 2 steps
+3. 2 steps + 1 step
+```
+
+### **🔹 Example 3:**  
+```python
+Input: n = 4
+Output: 5
+```
+
+---
+
+## **🚀 Solution Approach**  
+This problem can be solved using **Dynamic Programming**:
+1. **Base Cases**: If `n == 1`, there is only one way to climb (one 1-step). If `n == 2`, there are two ways (two 1-steps or one 2-step).
+2. **Recursion Relation**: For any `n > 2`, the number of ways to reach the `n`th step is the sum of the ways to reach the `(n-1)`th step and the `(n-2)`th step. This is because from the `(n-1)`th step, you can take a single step, and from the `(n-2)`th step, you can take a double step.
+3. **Optimization**: Instead of using a large array to store all values, we can optimize space by using just two variables to keep track of the last two values.
+
+---
+
+## **📝 Python Code (Climbing Stairs)**  
+```python
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        if n <= 2:
+            return n
+        first, second = 1, 2
+        for _ in range(3, n + 1):
+            first, second = second, first + second
+        return second
+```
+
+---
+
+## **⏳ Time & Space Complexity**  
+✅ **Time Complexity:** `O(n)`, where `n` is the number of stairs. We loop through the stairs once.  
+✅ **Space Complexity:** `O(1)`, because we only use two variables to store the results of the last two computations.
+
+---
+
+## **⭐ Follow for More**  
+If you found this helpful, **⭐ star** the repo and follow me on GitHub! 🚀😊
+```
