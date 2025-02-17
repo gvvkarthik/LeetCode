@@ -1,0 +1,53 @@
+
+
+```md
+# 🌟 Sort Colors
+
+## **📌 Problem Statement**  
+Given an array `nums` with `n` elements, where each element is an integer representing a color:
+- `0` represents **Red**
+- `1` represents **White**
+- `2` represents **Blue**
+
+You need to sort the array so that objects of the same color are adjacent, with the colors in the order: **Red → White → Blue**.
+
+### **🔹 Example 1:**  
+```python
+Input: nums = [2, 0, 2, 1, 1, 0]
+Output: [0, 0, 1, 1, 2, 2]
+```
+
+### **🔹 Example 2:**  
+```python
+Input: nums = [2, 0, 1]
+Output: [0, 1, 2]
+```
+
+---
+
+## **🚀 Solution Approach**  
+The problem can be solved efficiently by sorting the given array.
+1. **Sort the array**: Use the built-in `sort()` function to sort the elements.
+2. The result will be an array where elements of the same color (0, 1, and 2) are grouped together.
+
+---
+
+## **📝 Python Code (Sort Colors)**  
+```python
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        nums.sort()
+        print(nums)
+```
+
+---
+
+## **⏳ Time & Space Complexity**  
+✅ **Time Complexity:** `O(N log N)`, where `N` is the number of elements in the array. Sorting the array takes `O(N log N)` time.  
+✅ **Space Complexity:** `O(1)`, as no extra space is used besides the input array.
+
+---
+
+## **⭐ Follow for More**  
+If you found this helpful, **⭐ star** the repo and follow me on GitHub! 🚀😊
+```
